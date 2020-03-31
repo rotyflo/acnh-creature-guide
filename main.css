@@ -1,8 +1,15 @@
+html {
+  background-color: #2d3436;
+}
+
 body {
   text-align: center;
   font-family: arial;
   max-width: 700px;
   margin: auto;
+  background-color: #5cdb94;
+  color: #edf5e0;
+  border: solid 10px #2d3436;
 }
 
 table {
@@ -19,5 +26,5 @@ tr {
 }
 
 tr:nth-child(even) {
-  background-color: #eee;
+  background-color: #389583;
 }
