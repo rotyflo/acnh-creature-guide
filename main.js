@@ -12,25 +12,46 @@ let availablefish = [];
 
 populateBugLists();
 
-console.log('Last month to catch:')
-highPriorityBugs.forEach(function(bug) {
-  let firstHour = BUGS[bug]['time'][0];
-  let secondHour = BUGS[bug]['time'][1];
+printCreatures(BUGS, highPriorityBugs, 'high-priority-bugs');
 
-  console.log(`${bug.toUpperCase()}: ${firstHour} - ${secondHour}`);
-});
+document.getElementById('time').innerText = formatTime(currentHour);
+document.getElementById('month').innerText = formatDate(currentMonth);
 
-console.log('');
-
-console.log('Available BUGS:');
-availableBugs.forEach(function(bug) {
-  console.log(`The ${bug.toUpperCase()} can be found ${BUGS[bug]['location']}.`);
-});
-
-let test = document.getElementById('test');
-test.innerHTML = 'test';
+printCreatures(BUGS, availableBugs, 'available-bugs');
 
 // FUNCTIONALITY
+
+function formatTime(hour) {
+  if (hour === 0) {
+    return '12am';
+  }
+  else if (hour < 12) {
+    return `${hour}am`;
+  }
+  else if (hour === 12) {
+    return '12pm';
+  }
+  else {
+    return `${hour - 12}pm`;
+  }
+}
+
+function formatDate(month) {
+  return [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ][month - 1];
+}
 
 function populateBugLists() {
   for (let i = 0; i < bugNames.length; i++) {
@@ -46,6 +67,17 @@ function populateBugLists() {
 
       if (availableHours.includes(currentHour)) availableBugs.push(name);
     }
+  }
+}
+
+function printCreatures(database, creatures, elementId) {
+  for (let i = 0; i < creatures.length; i++) {
+    let creature = creatures[i];
+    let firstHour = formatTime(database[creature]['time'][0]);
+    let secondHour = formatTime(database[creature]['time'][1]);
+    let output = `<div><p>${creature.toUpperCase()} can be found ${database[creature]['location']}.</p>`;
+
+    document.getElementById(elementId).innerHTML += output;
   }
 }
 
