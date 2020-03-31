@@ -1,25 +1,32 @@
-const BUGS = generateBugs();
-const FISH = generateFish();
-let bugNames = Object.keys(BUGS);
-let fishNames = Object.keys(FISH);
+const CREATURES = generateCreatures();
+let creatureNames = Object.keys(CREATURES);
 let today = new Date();
 let currentMonth = today.getMonth() + 1;
 let currentHour = today.getHours();
-let highPriorityBugs = [];
-let highPriorityFish = [];
-let availableBugs = [];
-let availablefish = [];
+let highPriorityCreatures = listHighPriorityCreatures(CREATURES, creatureNames);
+let availableCreatures = listAvailableCreatures(CREATURES, creatureNames);
 
-populateBugLists();
-
- printHighPriorityCreatures(BUGS, highPriorityBugs, 'high-priority-bugs');
+printHighPriorityCreatures(CREATURES, highPriorityCreatures, 'high-priority-creatures');
 
 document.getElementById('time').innerText = formatTime(currentHour);
 document.getElementById('month').innerText = formatDate(currentMonth);
 
- printAvailableCreatures(BUGS, availableBugs, 'available-bugs');
+printAvailableCreatures(CREATURES, availableCreatures, 'available-creatures');
 
 // FUNCTIONALITY
+
+function formatName(name) {
+  let formattedName = name[0].toUpperCase();
+  let capitalizeLetter = false;
+
+  for (let i = 1; i < name.length; i++) {
+    formattedName += capitalizeLetter ? name[i].toUpperCase() : name[i];
+
+    capitalizeLetter = (name[i] === ' ' || name[i] === '-');
+  }
+
+  return formattedName;
+}
 
 function formatTime(hour) {
   if (hour === 0) {
@@ -53,21 +60,36 @@ function formatDate(month) {
   ][month - 1];
 }
 
-function populateBugLists() {
-  for (let i = 0; i < bugNames.length; i++) {
-    let name = bugNames[i];
-    let availableMonths = BUGS[name]['months'];
+function listHighPriorityCreatures(database, creatureNames) {
+  let highPriorityCreatures = [];
 
-    if (isHighPriority(availableMonths)) highPriorityBugs.push(name);
+  for (let i = 0; i < creatureNames.length; i++) {
+    let name = creatureNames[i];
+    let availableMonths = database[name]['months'];
+
+    if (isHighPriority(availableMonths)) highPriorityCreatures.push(name);
+  }
+
+  return highPriorityCreatures;
+}
+
+function listAvailableCreatures(database, creatureNames) {
+  let availableCreatures = [];
+
+  for (let i = 0; i < creatureNames.length; i++) {
+    let name = creatureNames[i];
+    let availableMonths = database[name]['months'];
 
     if (isAvailableThisMonth(availableMonths)) {
-      let firstHour = BUGS[name]['time'][0];
-      let lastHour = BUGS[name]['time'][1];
+      let firstHour = database[name]['time'][0];
+      let lastHour = database[name]['time'][1];
       let availableHours = listAvailableHours(firstHour, lastHour);
 
-      if (availableHours.includes(currentHour)) availableBugs.push(name);
+      if (availableHours.includes(currentHour)) availableCreatures.push(name);
     }
   }
+
+  return availableCreatures;
 }
 
 function printHighPriorityCreatures(database, creatures, elementId) {
@@ -78,7 +100,7 @@ function printHighPriorityCreatures(database, creatures, elementId) {
     let creature = creatures[i];
     let firstHour = formatTime(database[creature]['time'][0]);
     let lastHour = formatTime(database[creature]['time'][1]);
-    output += `<tr><td>${creature.toUpperCase()}</td>`;
+    output += `<tr><td>${formatName(creature)}</td>`;
     output += `<td>${firstHour} - ${lastHour}</td></tr>`;
   }
 
@@ -91,7 +113,7 @@ function printAvailableCreatures(database, creatures, elementId) {
 
   for (let i = 0; i < creatures.length; i++) {
     let creature = creatures[i];
-    output += `<tr><td>${creature.toUpperCase()}</td>`;
+    output += `<tr><td>${formatName(creature)}</td>`;
     output += `<td>${database[creature]['location']}</td>`;
     output += `<td>${database[creature]['price']}</td></tr>`;
   }
@@ -121,8 +143,11 @@ function listAvailableHours(firstHour, lastHour) {
 
 // CREATURES
 
-function generateBugs() {
+function generateCreatures() {
   return {
+
+    // BUG LIST
+
    'agrias butterfly': {
      'price': 3000,
      'location': 'flying around',
@@ -387,16 +412,44 @@ function generateBugs() {
      'time': [4, 19],
      'months': [3, 4, 5, 6, 9, 10]
    },
-  }
-}
 
-function generateFish() {
-  return {
-    'test': {
-      'price': 0,
-      'location': 'test',
-      'time': [0, 23],
-      'month': [1]
-    },
+   // FISH LIST
+
+   'bitterling': {
+     'price': 900,
+     'location': 'in the river',
+     'time': [0, 23],
+     'months': [1, 2, 3, 11, 12]
+   },
+   'football fish': {
+     'price': 2500,
+     'location': 'in the sea',
+     'time': [16, 9],
+     'months': [1, 2, 3, 11, 12]
+   },
+   'sea butterfly': {
+     'price': 1000,
+     'location': 'in the sea',
+     'time': [0, 23],
+     'months': [1, 2, 3, 12]
+   },
+   'stringfish': {
+     'price': 15000,
+     'location': 'in the clifftop river',
+     'time': [16, 9],
+     'months': [1, 2, 3, 12]
+   },
+   'sturgeon': {
+     'price': 10000,
+     'location': 'in the river mouth',
+     'time': [0, 23],
+     'months': [1, 2, 3, 9, 10, 11, 12]
+   },
+   'yellow perch': {
+     'price': 300,
+     'location': 'in the river',
+     'time': [0, 23],
+     'months': [1, 2, 3, 10, 11, 12]
+   },
   }
 }
