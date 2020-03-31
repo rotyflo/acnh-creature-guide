@@ -442,21 +442,69 @@ function generateCreatures() {
     },
     'bitterling': {
       'price': 900,
-      'location': 'in the river',
+      'location': 'in rivers',
       'time': [0, 23],
       'months': [1, 2, 3, 11, 12]
     },
     'black bass': {
       'price': 400,
-      'location': 'in the river',
+      'location': 'in rivers',
       'time': [0, 23],
       'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     },
     'blue marlin': {
       'price': 10000,
-      'location': 'at the pier',
+      'location': 'by the pier',
       'time': [0, 23],
       'months': [1, 2, 3, 4, 7, 8, 9, 11, 12]
+    },
+    'bluegill': {
+      'price': 180,
+      'location': 'in rivers',
+      'time': [9, 16],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'carp': {
+      'price': 300,
+      'location': 'in ponds',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'char': {
+      'price': 3800,
+      'location': 'in clifftop rivers and ponds',
+      'time': [16, 9],
+      'months': [3, 4, 5, 6, 9, 10, 11]
+    },
+    'cherry salmon': {
+      'price': 1000,
+      'location': 'in clifftop rivers and ponds',
+      'time': [16, 9],
+      'months': [3, 4, 5, 6, 9, 10, 11]
+    },
+    'coelacanth': {
+      'price': 15000,
+      'location': 'in the sea when raining',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'crucian carp': {
+      'price': 160,
+      'location': 'in rivers',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'dab': {
+      'price': 300,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 10, 11, 12]
+    },
+    'dace': {
+      'price': 240,
+      'location': 'in rivers',
+      'time': [16, 9],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     },
     'football fish': {
       'price': 2500,
@@ -464,27 +512,123 @@ function generateCreatures() {
       'time': [16, 9],
       'months': [1, 2, 3, 11, 12]
     },
+    'freshwater goby': {
+      'price': 400,
+      'location': 'in rivers',
+      'time': [16, 9],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'golden trout': {
+      'price': 15000,
+      'location': 'in clifftop rivers',
+      'time': [16, 9],
+      'months': [3, 4, 5, 9, 10, 11]
+    },
+    'goldfish': {
+      'price': 1300,
+      'location': 'in ponds',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'horse mackerel': {
+      'price': 150,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'koi': {
+      'price': 4000,
+      'location': 'in ponds',
+      'time': [16, 9],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'loach': {
+      'price': 400,
+      'location': 'in rivers',
+      'time': [0, 23],
+      'months': [3, 4, 5]
+    },
+    'oarfish': {
+      'price': 9000,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 12]
+    },
+    'olive flounder': {
+      'price': 800,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'pale chub': {
+      'price': 200,
+      'location': 'in rivers',
+      'time': [9, 16],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'pop-eyed goldfish': {
+      'price': 1300,
+      'location': 'in ponds',
+      'time': [9, 16],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'ranchu goldfish': {
+      'price': 4500,
+      'location': 'in ponds',
+      'time': [9, 16],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'red snapper': {
+      'price': 3000,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'sea bass': {
+      'price': 400,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
     'sea butterfly': {
       'price': 1000,
       'location': 'in the sea',
       'time': [0, 23],
       'months': [1, 2, 3, 12]
     },
+    'squid': {
+      'price': 500,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 12]
+    },
     'stringfish': {
       'price': 15000,
-      'location': 'in the clifftop river',
+      'location': 'in clifftop rivers',
       'time': [16, 9],
       'months': [1, 2, 3, 12]
     },
     'sturgeon': {
       'price': 10000,
-      'location': 'in the river mouth',
+      'location': 'in river mouths',
       'time': [0, 23],
       'months': [1, 2, 3, 9, 10, 11, 12]
     },
+    'tadpole': {
+      'price': 100,
+      'location': 'in ponds',
+      'time': [0, 23],
+      'months': [3, 4, 5, 6, 7]
+    },
+    'tuna': {
+      'price': 7000,
+      'location': 'by the pier',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 11, 12]
+    },
     'yellow perch': {
       'price': 300,
-      'location': 'in the river',
+      'location': 'in rivers',
       'time': [0, 23],
       'months': [1, 2, 3, 10, 11, 12]
     },
