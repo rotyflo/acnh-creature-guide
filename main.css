@@ -1,5 +1,8 @@
 body {
   text-align: center;
+  font-family: arial;
+  max-width: 700px;
+  margin: auto;
 }
 
 table {
@@ -9,6 +12,10 @@ table {
 
 table, th, td {
   padding: 15px;
+}
+
+tr {
+  text-align: left;
 }
 
 tr:nth-child(even) {
