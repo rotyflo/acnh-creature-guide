@@ -12,12 +12,12 @@ let availablefish = [];
 
 populateBugLists();
 
-printCreatures(BUGS, highPriorityBugs, 'high-priority-bugs');
+ printHighPriorityCreatures(BUGS, highPriorityBugs, 'high-priority-bugs');
 
 document.getElementById('time').innerText = formatTime(currentHour);
 document.getElementById('month').innerText = formatDate(currentMonth);
 
-printCreatures(BUGS, availableBugs, 'available-bugs');
+ printAvailableCreatures(BUGS, availableBugs, 'available-bugs');
 
 // FUNCTIONALITY
 
@@ -70,15 +70,33 @@ function populateBugLists() {
   }
 }
 
-function printCreatures(database, creatures, elementId) {
+function printHighPriorityCreatures(database, creatures, elementId) {
+  let element = document.getElementById(elementId);
+  let output = '<table><th>Name</th><th>Active hours</th>';
+
   for (let i = 0; i < creatures.length; i++) {
     let creature = creatures[i];
     let firstHour = formatTime(database[creature]['time'][0]);
-    let secondHour = formatTime(database[creature]['time'][1]);
-    let output = `<div><p>${creature.toUpperCase()} can be found ${database[creature]['location']}.</p>`;
-
-    document.getElementById(elementId).innerHTML += output;
+    let lastHour = formatTime(database[creature]['time'][1]);
+    output += `<tr><td>${creature.toUpperCase()}</td>`;
+    output += `<td>${firstHour} - ${lastHour}</td></tr>`;
   }
+
+  element.innerHTML += output + '</table>';
+}
+
+function printAvailableCreatures(database, creatures, elementId) {
+  let element = document.getElementById(elementId);
+  let output = '<table><th>Name</th><th>Can be found</th><th>Price</th>';
+
+  for (let i = 0; i < creatures.length; i++) {
+    let creature = creatures[i];
+    output += `<tr><td>${creature.toUpperCase()}</td>`;
+    output += `<td>${database[creature]['location']}</td>`;
+    output += `<td>${database[creature]['price']}</td></tr>`;
+  }
+
+  element.innerHTML += output + '</table>';
 }
 
 function isAvailableThisMonth(availableMonths) {
