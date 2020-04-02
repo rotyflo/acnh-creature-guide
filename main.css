@@ -12,9 +12,10 @@ body {
 
 table {
   width: 100%;
+  padding: 8px;
 }
 
-table, th, td {
+th, td {
   padding: 8px;
 }
 
@@ -22,14 +23,14 @@ tr {
   text-align: left;
 }
 
-#important-creatures tr {
+#important-creatures th,  #important-creatures td {
   background-color: #b71c1c;
 }
 
-#active-creatures tr {
+#active-creatures th, #active-creatures td {
   background-color: #689F38;
 }
 
-#inactive-creatures tr {
+#inactive-creatures th, #inactive-creatures td {
   background-color: #0288D1;
 }
