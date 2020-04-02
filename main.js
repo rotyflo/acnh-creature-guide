@@ -3,15 +3,12 @@ let creatureNames = Object.keys(CREATURES);
 let today = new Date();
 let currentMonth = today.getMonth() + 1;
 let currentHour = today.getHours();
-let highPriorityCreatures = listHighPriorityCreatures(CREATURES, creatureNames).sort();
-let availableCreatures = listAvailableCreatures(CREATURES, creatureNames).sort();
-
-printHighPriorityCreatures(CREATURES, highPriorityCreatures, 'high-priority-creatures');
+let monthlyCreatures = listMonthlyCreatures(CREATURES, creatureNames).sort();
 
 document.getElementById('time').innerText = formatTime(currentHour);
 document.getElementById('month').innerText = formatDate(currentMonth);
 
-printAvailableCreatures(CREATURES, availableCreatures, 'available-creatures');
+printCreatures(CREATURES, monthlyCreatures, 'available-creatures');
 
 // FUNCTIONALITY
 
@@ -60,80 +57,58 @@ function formatDate(month) {
   ][month - 1];
 }
 
-function listHighPriorityCreatures(database, creatureNames) {
-  let highPriorityCreatures = [];
+// CREATURES AVAILABLE THIS MONTH
+function listMonthlyCreatures(database, creatureNames) {
+  let monthlyCreatures = [];
 
   for (let i = 0; i < creatureNames.length; i++) {
     let name = creatureNames[i];
-    let availableMonths = database[name]['months'];
+    let creature = database[name];
 
-    if (isHighPriority(availableMonths)) highPriorityCreatures.push(name);
+    if (isAvailableThisMonth(creature)) monthlyCreatures.push(name);
   }
 
-  return highPriorityCreatures;
+  return monthlyCreatures;
 }
 
-function listAvailableCreatures(database, creatureNames) {
-  let availableCreatures = [];
-
-  for (let i = 0; i < creatureNames.length; i++) {
-    let name = creatureNames[i];
-    let availableMonths = database[name]['months'];
-
-    if (isAvailableThisMonth(availableMonths)) {
-      let firstHour = database[name]['time'][0];
-      let lastHour = database[name]['time'][1];
-      let availableHours = listAvailableHours(firstHour, lastHour);
-
-      if (availableHours.includes(currentHour)) availableCreatures.push(name);
-    }
-  }
-
-  return availableCreatures;
-}
-
-function printHighPriorityCreatures(database, creatures, elementId) {
+function printCreatures(database, monthlyCreatures, elementId) {
   let element = document.getElementById(elementId);
-  let output = '<table><th>Name</th><th>Active hours</th>';
+  let output = '<table><th>Name</th><th>Can be found</th><th>Active</th><th>Price</th>';
 
-  for (let i = 0; i < creatures.length; i++) {
-    let creature = creatures[i];
-    let firstHour = database[creature]['time'][0];
-    let lastHour = database[creature]['time'][1];
+  for (let i = 0; i < monthlyCreatures.length; i++) {
+    let name = monthlyCreatures[i];
+    let creature = database[name];
+    let firstHour = creature['time'][0];
+    let lastHour = creature['time'][1];
 
-    output += `<tr><td>${formatName(creature)}</td>`;
+    if (isHighPriority(creature)) output += '<tr style="background: #b71c1c;">';
+    else if (isAvailableThisHour(creature)) output += '<tr style="background: #009688;">';
+    else output += '<tr style="background: grey;">'
 
-    if (firstHour === 0 && lastHour === 23) {
-      output += '<td>all day</td>';
-    }
-    else {
-      output += `<td>${formatTime(firstHour)} - ${formatTime(lastHour)}</td></tr>`;
-    }
+    output += `<td>${formatName(name)}</td>`;
+    output += `<td>${creature['location']}</td>`;
+    if (firstHour === 0 && lastHour === 23) output += '<td>all day</td>';
+    else output += `<td>${formatTime(firstHour)} - ${formatTime(lastHour)}</td>`;
+    output += `<td>${creature['price']}</td></tr>`;
   }
 
   element.innerHTML += output + '</table>';
 }
 
-function printAvailableCreatures(database, creatures, elementId) {
-  let element = document.getElementById(elementId);
-  let output = '<table><th>Name</th><th>Can be found</th><th>Price</th>';
-
-  for (let i = 0; i < creatures.length; i++) {
-    let creature = creatures[i];
-    output += `<tr><td>${formatName(creature)}</td>`;
-    output += `<td>${database[creature]['location']}</td>`;
-    output += `<td>${database[creature]['price']}</td></tr>`;
-  }
-
-  element.innerHTML += output + '</table>';
+function isAvailableThisMonth(creature) {
+  return creature['months'].includes(currentMonth);
 }
 
-function isAvailableThisMonth(availableMonths) {
-  return availableMonths.includes(currentMonth);
+function isAvailableThisHour(creature) {
+  let firstHour = creature['time'][0];
+  let lastHour = creature['time'][1];
+  let availableHours = listAvailableHours(firstHour, lastHour);
+
+  return availableHours.includes(currentHour);
 }
 
-function isHighPriority(availableMonths) {
-  return isAvailableThisMonth(availableMonths) && !availableMonths.includes(currentMonth + 1);
+function isHighPriority(creature) {
+  return isAvailableThisMonth(creature) && !creature['months'].includes(currentMonth + 1);
 }
 
 function listAvailableHours(firstHour, lastHour) {

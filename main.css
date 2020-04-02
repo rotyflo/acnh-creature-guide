@@ -24,7 +24,3 @@ table, th, td {
 tr {
   text-align: left;
 }
-
-tr:nth-child(even) {
-  background-color: #009688;
-}
