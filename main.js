@@ -487,6 +487,12 @@ function generateCreatures() {
       'time': [9, 16],
       'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     },
+    'butterfly fish': {
+      'price': 1000,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9]
+    },
     'carp': {
       'price': 300,
       'location': 'in ponds',
@@ -505,11 +511,23 @@ function generateCreatures() {
       'time': [16, 9],
       'months': [3, 4, 5, 6, 9, 10, 11]
     },
+    'clown fish': {
+      'price': 650,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9]
+    },
     'coelacanth': {
       'price': 15000,
       'location': 'in the sea when raining',
       'time': [0, 23],
       'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'crawfish': {
+      'price': 200,
+      'location': 'in ponds',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9]
     },
     'crucian carp': {
       'price': 160,
@@ -553,11 +571,23 @@ function generateCreatures() {
       'time': [0, 23],
       'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     },
+    'guppy': {
+      'price': 1300,
+      'location': 'in rivers',
+      'time': [9, 16],
+      'months': [4, 5, 6, 7, 8, 9, 10, 11]
+    },
     'horse mackerel': {
       'price': 150,
       'location': 'in the sea',
       'time': [0, 23],
       'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'killifish': {
+      'price': 300,
+      'location': 'in ponds',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8,]
     },
     'koi': {
       'price': 4000,
@@ -570,6 +600,12 @@ function generateCreatures() {
       'location': 'in rivers',
       'time': [0, 23],
       'months': [3, 4, 5]
+    },
+    'neon tetra': {
+      'price': 500,
+      'location': 'in rivers',
+      'time': [9, 16],
+      'months': [4, 5, 6, 7, 8, 9, 10, 11]
     },
     'oarfish': {
       'price': 9000,
@@ -619,6 +655,18 @@ function generateCreatures() {
       'time': [0, 23],
       'months': [1, 2, 3, 12]
     },
+    'sea horse': {
+      'price': 1100,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9, 10, 11]
+    },
+    'snapping turtle': {
+      'price': 5000,
+      'location': 'in rivers',
+      'time': [21, 4],
+      'months': [4, 5, 6, 7, 8, 9, 10]
+    },
     'squid': {
       'price': 500,
       'location': 'in the sea',
@@ -637,6 +685,12 @@ function generateCreatures() {
       'time': [0, 23],
       'months': [1, 2, 3, 9, 10, 11, 12]
     },
+    'surgeonfish': {
+      'price': 1000,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9]
+    },
     'tadpole': {
       'price': 100,
       'location': 'in ponds',
@@ -654,6 +708,12 @@ function generateCreatures() {
       'location': 'in rivers',
       'time': [0, 23],
       'months': [1, 2, 3, 10, 11, 12]
+    },
+    'zebra turkeyfish': {
+      'price': 500,
+      'location': 'in the sea',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9, 10, 11]
     },
   }
 }
