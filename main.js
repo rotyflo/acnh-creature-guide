@@ -4,11 +4,14 @@ let today = new Date();
 let currentMonth = today.getMonth() + 1;
 let currentHour = today.getHours();
 let monthlyCreatures = listMonthlyCreatures(CREATURES, creatureNames).sort();
+let importantElement = document.getElementById('important-creatures');
+let activeElement = document.getElementById('active-creatures');
+let inactiveElement = document.getElementById('inactive-creatures');
 
 document.getElementById('time').innerText = formatTime(currentHour);
 document.getElementById('month').innerText = formatDate(currentMonth);
 
-printCreatures(CREATURES, monthlyCreatures, 'available-creatures');
+printCreatures(CREATURES, monthlyCreatures, importantElement, activeElement, inactiveElement);
 
 // FUNCTIONALITY
 
@@ -71,9 +74,10 @@ function listMonthlyCreatures(database, creatureNames) {
   return monthlyCreatures;
 }
 
-function printCreatures(database, monthlyCreatures, elementId) {
-  let element = document.getElementById(elementId);
-  let output = '<table><th>Name</th><th>Can be found</th><th>Active</th><th>Price</th>';
+function printCreatures(database, monthlyCreatures, importantElement, activeElement, inactiveElement) {
+  let importantOutput = '<table><th>Name</th><th>Times</th>';
+  let activeOutput = '<table><th>Name</th><th>Can be found</th><th>Price</th>';
+  let inactiveOutput = '<table><th>Name</th><th>Times</th>';
 
   for (let i = 0; i < monthlyCreatures.length; i++) {
     let name = monthlyCreatures[i];
@@ -81,18 +85,26 @@ function printCreatures(database, monthlyCreatures, elementId) {
     let firstHour = creature['time'][0];
     let lastHour = creature['time'][1];
 
-    if (isHighPriority(creature)) output += '<tr style="background: #b71c1c;">';
-    else if (isAvailableThisHour(creature)) output += '<tr style="background: #009688;">';
-    else output += '<tr style="background: grey;">'
-
-    output += `<td>${formatName(name)}</td>`;
-    output += `<td>${creature['location']}</td>`;
-    if (firstHour === 0 && lastHour === 23) output += '<td>all day</td>';
-    else output += `<td>${formatTime(firstHour)} - ${formatTime(lastHour)}</td>`;
-    output += `<td>${creature['price']}</td></tr>`;
+    if (isHighPriority(creature)) {
+      importantOutput += `<tr><td>${formatName(name)}</td>`;
+      if (firstHour === 0 && lastHour === 23) importantOutput += '<td>all day</td>';
+      else importantOutput += `<td>${formatTime(firstHour)} - ${formatTime(lastHour)}</td></tr>`;
+    }
+    if (isAvailableThisHour(creature)) {
+      activeOutput += `<tr><td>${formatName(name)}</td>`;
+      activeOutput += `<td>${creature['location']}</td>`;
+      activeOutput += `<td>${creature['price']}</td></tr>`;
+    }
+    else {
+      inactiveOutput += `<tr><td>${formatName(name)}</td>`;
+      if (firstHour === 0 && lastHour === 23) inactiveOutput += '<td>all day</td>';
+      else inactiveOutput += `<td>${formatTime(firstHour)} - ${formatTime(lastHour)}</td></tr>`;
+    }
   }
 
-  element.innerHTML += output + '</table>';
+  importantElement.innerHTML += importantOutput + '</table>';
+  activeElement.innerHTML += activeOutput + '</table>';
+  inactiveElement.innerHTML += inactiveOutput + '</table>';
 }
 
 function isAvailableThisMonth(creature) {

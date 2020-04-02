@@ -1,5 +1,5 @@
 html {
-  background-color: #3f51b5;
+  background-color: #455A64;
 }
 
 body {
@@ -7,20 +7,29 @@ body {
   font-family: arial;
   max-width: 700px;
   margin: auto;
-  background-color: #4caf50;
   color: #edf5e0;
-  border: solid 10px #607d8b;
 }
 
 table {
-  border-collapse: collapse;
   width: 100%;
 }
 
 table, th, td {
-  padding: 15px;
+  padding: 8px;
 }
 
 tr {
   text-align: left;
+}
+
+#important-creatures tr {
+  background-color: #b71c1c;
+}
+
+#active-creatures tr {
+  background-color: #689F38;
+}
+
+#inactive-creatures tr {
+  background-color: #0288D1;
 }
