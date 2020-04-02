@@ -202,12 +202,12 @@ function generateCreatures() {
       'time': [0, 23],
       'months': [7, 8]
     },
-    // 'citrus long-horned beetle': {
-    //   'price': ,
-    //   'location': '',
-    //   'time': [],
-    //   'months': []
-    // },
+    'citrus long-horned beetle': {
+      'price': 350,
+      'location': 'on tree stumps',
+      'time': [0, 23],
+      'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
     'common bluebottle': {
       'price': 300,
       'location': 'flying around',
@@ -238,12 +238,12 @@ function generateCreatures() {
     //   'time': [],
     //   'months': []
     // },
-    // 'darner dragonfly': {
-    //   'price': ,
-    //   'location': '',
-    //   'time': [],
-    //   'months': []
-    // },
+    'darner dragonfly': {
+      'price': 230,
+      'location': 'flying around',
+      'time': [8, 17],
+      'months': [4, 5, 6, 7, 8, 9, 10]
+    },
     // 'diving beetle': {
     //   'price': ,
     //   'location': '',
@@ -274,11 +274,23 @@ function generateCreatures() {
       'time': [17, 8],
       'months': [1, 2, 3, 6, 7, 8, 9, 12]
     },
+    'flea': {
+      'price': 70,
+      'location': 'on villagers',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8, 9, 10, 11]
+    },
     'fly': {
       'price': 60,
       'location': 'on trash items',
       'time': [0, 23],
       'months': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    },
+    'giant water bug': {
+      'price': 2000,
+      'location': 'on ponds and rivers',
+      'time': [19, 8],
+      'months': [4, 5, 6, 7, 8, 9]
     },
     'great purple emperor': {
       'price': 3000,
@@ -298,11 +310,29 @@ function generateCreatures() {
       'time': [8, 17],
       'months': [3, 4, 5, 6, 7]
     },
+    'jewel beetle': {
+      'price': 2400,
+      'location': 'on tree stumps',
+      'time': [0, 23],
+      'months': [4, 5, 6, 7, 8]
+    },
     'ladybug': {
       'price': 200,
       'location': 'on flowers',
       'time': [8, 17],
       'months': [3, 4, 5, 6, 10]
+    },
+    'long locust': {
+      'price': 200,
+      'location': 'on the ground',
+      'time': [8, 19],
+      'months': [4, 5, 6, 7, 8, 9, 10, 11]
+    },
+    'madagascan sunset moth': {
+      'price': 2500,
+      'location': 'flying around and on the ground',
+      'time': [8, 16],
+      'months': [4, 5, 6, 7, 8, 9]
     },
     'man-faced stink bug': {
       'price': 1000,
@@ -351,6 +381,12 @@ function generateCreatures() {
       'location': 'by hitting rocks',
       'time': [23, 16],
       'months': [1, 2, 3, 4, 5, 6, 9, 10, 11, 12]
+    },
+    "rajah brooke's birdwing": {
+      'price': 2500,
+      'location': 'flying by purple flowers',
+      'time': [8, 17],
+      'months': [1, 2, 4, 5, 6, 7, 8, 9, 12]
     },
     'snail': {
       'price': 250,
